@@ -7,6 +7,7 @@ class ParkingSpot < ActiveRecord::Base
 
   def self.search(query)
     coordinates = Geocoder.coordinates(query);
+    p self.near(coordinates,0.1);
     {center: coordinates, parkingSpots: self.near(coordinates,0.1)}
   end
 
