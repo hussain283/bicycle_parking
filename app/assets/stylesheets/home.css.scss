@@ -1,3 +1,24 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body, #container, #main, .bicycle_parking {
+  height: 100%;
+  width: 100%;
+}
+
+.parking-map {
+  height: 100%;
+  width: 100%;
+}
+
+.form {
+  margin-left: 50px;
+  margin-top: 5px;
+  background-color: rgba(0,0,0,0.8);
+  padding: 10px;
+  border-radius: 10px;
+  color: #eee;
+  position: fixed;
+  z-index: 1;
+}

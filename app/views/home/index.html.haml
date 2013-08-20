@@ -1,2 +1,6 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.bicycle_parking
+  .parking-map
+:javascript
+  $(document).ready(function(){
+    BicycleParking.initialize(JSON.parse(#{@parking_spots.to_json}));
+  });

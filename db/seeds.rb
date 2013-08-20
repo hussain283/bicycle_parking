@@ -7,3 +7,21 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
+
+require 'open-uri'
+require 'json'
+
+ParkingSpot.destroy_all
+
+spots = JSON.parse(open('http://data.sfgov.org/resource/w969-5mn4.json').read)
+
+
+spots.each do |spot|
+  location = JSON.parse(spot['location_column']['human_address'])
+  ParkingSpot.create(name: spot['location_name'],
+                  address: location['address'].titleize,
+                  city: location['city'].titleize,
+                  state: location['state'],
+                  latitude: spot['latitude'],
+                  longitude: spot['longitude'])
+end
