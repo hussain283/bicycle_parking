@@ -7,8 +7,8 @@ class ParkingSpot < ActiveRecord::Base
 
   def self.search(query)
     coordinates = Geocoder.coordinates(query);
-    p self.near(coordinates,0.1);
-    {center: coordinates, parkingSpots: self.near(coordinates,0.1)}
+    p self.near(coordinates,0.2);
+    {center: coordinates, parkingSpots: self.near(coordinates,0.2).limit(5)}
   end
 
   def full_address
