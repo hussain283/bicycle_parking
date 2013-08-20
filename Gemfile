@@ -18,6 +18,8 @@ gem 'json'
 gem 'backbone-on-rails'
 gem 'geocoder'
 gem 'unicorn'
+gem 'newrelic_rpm'
+
 
 group :development do
   gem 'better_errors'
