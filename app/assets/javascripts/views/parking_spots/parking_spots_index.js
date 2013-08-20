@@ -30,7 +30,7 @@ BicycleParking.Views.ParkingSpotsMapView = Backbone.View.extend({
     });
 
     if (this.markers.length > 0) {
-      this.renderClosestRoute();
+      this.renderRoute(this.center, this.markers[0].getPosition());
     }
     
     return this
@@ -43,9 +43,17 @@ BicycleParking.Views.ParkingSpotsMapView = Backbone.View.extend({
   },
 
   newMarker: function(parkingSpot){
-    return new google.maps.Marker({
-      position: new google.maps.LatLng(parkingSpot.get('latitude'),parkingSpot.get('longitude'))
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(parkingSpot.get('latitude'),parkingSpot.get('longitude')),
+      title: parkingSpot.escape('address'),
+      icon: {url: 'http://www.clker.com/cliparts/Q/C/c/P/X/3/black-sign-bike-th.png', scaledSize: new google.maps.Size(40,40) }
     });
+    var self = this;
+    google.maps.event.addListener(marker, 'click', function() {
+      self.renderRoute(self.center, this.getPosition());
+    });
+
+    return marker;
   },
 
   removeMarkers: function(){
@@ -56,10 +64,10 @@ BicycleParking.Views.ParkingSpotsMapView = Backbone.View.extend({
     this.center = new google.maps.LatLng(center[0], center[1]);
   },
 
-  renderClosestRoute: function() {
+  renderRoute: function(start, end) {
     var request = {
-      origin: this.center,
-      destination: this.markers[0].getPosition(),
+      origin: start,
+      destination: end,
       travelMode: google.maps.DirectionsTravelMode.WALKING
     };
     
