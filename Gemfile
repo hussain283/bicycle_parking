@@ -17,6 +17,7 @@ gem 'haml_ejs'
 gem 'json'
 gem 'backbone-on-rails'
 gem 'geocoder'
+gem 'unicorn'
 
 group :development do
   gem 'better_errors'
