@@ -13,17 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130818220337) do
 
-  create_table "parking_spots", :force => true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "parking_spots", ["latitude", "longitude"], :name => "index_parking_spots_on_latitude_and_longitude"
+# Could not dump table "parking_spots" because of following NoMethodError
+#   undefined method `result' for Interrupt:Interrupt
 
 end
