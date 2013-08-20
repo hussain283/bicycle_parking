@@ -17,6 +17,7 @@ BicycleParking.Views.ParkingSpotsMapView = Backbone.View.extend({
   },
 
   render: function(){
+
     this.removeMarkers();
 
     this.markers = [];
@@ -28,7 +29,10 @@ BicycleParking.Views.ParkingSpotsMapView = Backbone.View.extend({
       marker.setMap(self.map);
     });
 
-    this.renderClosestRoute();
+    if (this.markers.length > 0) {
+      this.renderClosestRoute();
+    }
+    
     return this
   },
 
