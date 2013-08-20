@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
-//= require ../../../vendor/assets/javascripts/backbone.googlemaps.js
 //= require bicycle_parking
 //= require_tree ../templates
 //= require_tree ./models
